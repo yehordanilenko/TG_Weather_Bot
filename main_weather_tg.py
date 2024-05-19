@@ -14,6 +14,9 @@ import asyncio
 import requests
 from datetime import datetime, timedelta
 import pytz
+from aiogram.dispatcher.filters.state import StatesGroup, State
+import aiohttp
+
 
 db_config = {
     'host': host,
@@ -218,7 +221,7 @@ async def subscribe_city_selected(callback_query: types.CallbackQuery, state: FS
         await callback_query.message.reply("Произошла ошибка при выборе города.")
     await bot.answer_callback_query(callback_query.id)
 
-from aiogram.dispatcher.filters.state import StatesGroup, State
+
 
 # Определение класса состояний для подписки
 class SubscribeForm(StatesGroup):
@@ -343,7 +346,7 @@ async def get_user_timezone(user_id):
                 result = await cur.fetchone()
                 return result[0] if result else None
 
-import aiohttp
+
 
 
 
